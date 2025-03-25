@@ -42,7 +42,7 @@ import sys
 import datasets
 import torch
 import transformers
-from datasets import load_dataset
+from datasets import load_dataset, load_from_disk
 from transformers import set_seed
 from transformers.trainer_utils import get_last_checkpoint
 
@@ -100,7 +100,8 @@ def main(script_args, training_args, model_args):
     ################
     # Load datasets
     ################
-    dataset = load_dataset(script_args.dataset_name, name=script_args.dataset_config)
+    # dataset = load_dataset(script_args.dataset_name, name=script_args.dataset_config)
+    dataset = load_from_disk(script_args.dataset_name)
 
     ################
     # Load tokenizer
